@@ -25,18 +25,30 @@ console.log (displayProductDetails(inventory[4]));
 
 // displaying stock levels of all products
 
-function updateStock(product, unitsSold){
+function updateStock(product, unitsSold){//defining updateStock function
 product.quantity -= unitsSold; //subtracting units sold from the number of products in stock
 if (product.quantity<=0){
     console.log(`${product.name} is out of stock.`);
 } else if (product.quantity <= product.lowStockLevel){
 console.log (`${product.name} is low in stock.`);
 }else {
-    console.log (`${product.name} is in stock.`);
+    console.log (`${product.name} is in stock.`);// using if else to show what to display if the stock reaches or goes under certain values
 }
 }
 updateStock(inventory[0], 100);
 updateStock(inventory[1], 400);
 updateStock(inventory[2], 52);
 updateStock(inventory[3], 15);
-updateStock(inventory[4], 155);
+updateStock(inventory[4], 155);//updating the stock with units sold, which will be subtracted from product quantity.
+
+function checkLowStock(inventory){// defining the function with inventory as the parameter
+
+ console.log ('The products with a low stock level are:');
+ inventory.forEach(product=> {
+    if (product.quantity< product.lowStockLevel){
+        console.log( `${product.name}`); 
+    }
+ });
+}
+checkLowStock(inventory);
+
