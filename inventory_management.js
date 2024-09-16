@@ -6,7 +6,7 @@ const inventory= [
     {name: 'Screen protector', price: 34.99, quantity:15, lowStockLevel: 58},
     {name: 'Pixel buds', price: 199.99, quantity: 175, lowStockLevel: 20},
 ];
-//If we want to display the information we can use: console.log ('The inventory information is:', inventory)
+//If we want to display all the information in the array we can use: console.log ('The inventory information is:', inventory)
 
 //task 2: determining whether a product is in stock or has low stock
 function displayProductDetails(product){//defining the function with the product parameter
@@ -47,7 +47,7 @@ function checkLowStock(inventory){// defining the function with inventory as the
  console.log ('The products with a low stock level are:');
  inventory.forEach(product=> { //usingforEach to iterate over the array
     if (product.quantity<= product.lowStockLevel){
-        console.log( `${product.name}`);  //if the quantity of the product reaches the low stock level, it the name of the product will be displayed
+        console.log( `${product.name}`);  //if the quantity of the product reaches the low stock level, the name of the product will be displayed
     }
  });
 }
@@ -55,24 +55,25 @@ checkLowStock(inventory);//calling the function
 
 // creating a function to calculate total inventory value
 function calculateInventoryValue(inventory){
-    return inventory.reduce((total, product)=>{
-        return total+ (product.price* product.quantity);
+    return inventory.reduce((total, product)=>{ //using reduce to get the total value of the products
+        return total+ (product.price* product.quantity);// adding the value of a product to the total
         
-    },0)
+    },0)//starting the total with 0
 }
-const totalValue= calculateInventoryValue(inventory);
-console.log (`The total inventory value is: ${totalValue}`);
+const totalValue= calculateInventoryValue(inventory);//calculating the total value
+console.log (`The total inventory value is: ${totalValue}`);//logging the results
 
 //creating a function to process a sale
-function processSale (productName, unitsSold){
-    const product= inventory.find (item=> item.name=== productName);
+function processSale (productName, unitsSold){//defining the function with productName and unitsSold as parameters
+    const product= inventory.find (item=> item.name=== productName);//finding the product by name from the inventory
  
+//checking if the the product is found
  if (product){
-     updateStock(product, unitsSold);
+     updateStock(product, unitsSold);// if it is found, the stock value is updated
  } else {
-     console.log (`Error: ${productName} is not in the inventory. `)
+     console.log (`Error: ${productName} is not in the inventory. `)// if not found, an error message is displayed
  }
  }
- processSale('Screen protector',20)
+ processSale('Screen protector',20)//logging the results after proccessing sales for different products
  processSale('Pixel buds',1)
- processSale('50W Charger',20)
+ processSale('50W Charger',20)//there is no 50W charger in the inventory, so an error message will be displayed.
