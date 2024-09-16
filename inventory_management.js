@@ -63,4 +63,16 @@ function calculateInventoryValue(inventory){
 const totalValue= calculateInventoryValue(inventory);
 console.log (`The total inventory value is: ${totalValue}`);
 
-
+//creating a function to process a sale
+function processSale (productName, unitsSold){
+    const product= inventory.find (item=> item.name=== productName);
+ 
+ if (product){
+     updateStock(product, unitsSold);
+ } else {
+     console.log (`Error: ${productName} is not in the inventory. `)
+ }
+ }
+ processSale('Screen protector',20)
+ processSale('Pixel buds',1)
+ processSale('50W Charger',20)
