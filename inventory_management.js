@@ -13,7 +13,7 @@ function displayProductDetails(product){//defining the function with the product
     const stockstatus= product.quantity <= product.lowStockLevel? "Low stock": "In Stock";
     //creating a variable to store the result of whether product.quantity is less than or equal to low stock level. Then, I have used a ternary operator to check if something is in stock or low stock
     
-    return `${product.name} is ${stockstatus}`;
+    return `${product.name}: Price- ${product.price}, Quantity- ${product.quantity}, Status- ${stockstatus}`;
     // creating a string to show the product name and its stock status
 }
 
@@ -35,8 +35,8 @@ console.log (`${product.name} is low in stock.`);
     console.log (`${product.name} is in stock.`);// using if else to show what to display if the stock reaches or goes under certain values
 }
 }
-updateStock(inventory[0], 100);
-updateStock(inventory[1], 400);
+updateStock(inventory[0], 50);
+updateStock(inventory[1], 200);
 updateStock(inventory[2], 52);
 updateStock(inventory[3], 15);
 updateStock(inventory[4], 155);//updating the stock with units sold, which will be subtracted from product quantity.
@@ -62,4 +62,5 @@ function calculateInventoryValue(inventory){
 }
 const totalValue= calculateInventoryValue(inventory);
 console.log (`The total inventory value is: ${totalValue}`);
+
 
